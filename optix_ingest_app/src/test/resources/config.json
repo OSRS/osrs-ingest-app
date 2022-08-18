@@ -1,0 +1,39 @@
+{
+  "DeployName": "junit_testing_app",
+  "TargetThreads": 4,
+  "Sources": {
+    "input_mqtt": {
+      "type": "mqtt",
+      "host": "localhost",
+      "port": "9998"
+    },
+    "input_mqtt2": {
+      "type": "mqtt",
+      "host": "localhost",
+      "port": "9999"
+    }
+  },
+  "Writers": {
+    "output_mqtt": {
+      "type": "mqtt",
+      "host": "localhost",
+      "port": "8888"
+    },
+    "output_mqtt2": {
+      "type": "mqtt",
+      "host": "localhost",
+      "port": "8889"
+    }
+  },
+  "Types": {
+    "DataSources": {
+      "mqtt": "optix.time.ingest.sources.MQTTIngestSource"
+    },
+    "DataWriters": {
+      "mqtt": "optix.time.ingest.writers.MQTTIngestWriter"
+    },
+    "Transformers": {
+      "lambda": "optix.time.ingest.transforms.LambdaTransformer"
+    }
+  }
+}

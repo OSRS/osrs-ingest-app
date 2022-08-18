@@ -1,0 +1,37 @@
+{
+  "DeployName": "test_app",
+  "TargetThreads": 4,
+  "Sources": {
+    "mqtt_in_test": {
+      "type": "mqtt",
+      "host": "localhost",
+      "port": "9999",
+      "qos": "1",
+      "cleanSession": "true"
+    }
+  },
+  "Writers": {
+    "internal_mqtt": {
+      "type": "mqtt",
+      "host": "localhost",
+      "port": "8888"
+    },
+    "internal_mqtt_optix": {
+      "type": "optixTimeMqtt",
+      "host": "localhost",
+      "port": "8889"
+    }
+  },
+  "Types": {
+    "DataSources": {
+      "mqtt": "optix.time.ingest.sources.MQTTIngestSource"
+    },
+    "DataWriters": {
+      "mqtt": "optix.time.ingest.writers.MQTTIngestWriter",
+      "optixTimeMqtt": "optix.time.ingest.writers.OptixTimeIngestWriter"
+    },
+    "Transformers": {
+      "lambda": "optix.time.ingest.transforms.LambdaTransformer"
+    }
+  }
+}

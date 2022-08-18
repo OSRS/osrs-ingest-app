@@ -1,0 +1,38 @@
+{
+  "DeployName": "test_app_sample_extensions",
+  "TargetThreads": 4,
+  "Sources": {
+    "sample_source_test": {
+      "type": "echoSample"
+    },
+    "wrapper": {
+      "type": "wrapper"
+    }
+  },
+  "Writers": {
+    "sample_writer_test": {
+      "type": "sample"
+    },
+    "wrapper": {
+      "type": "wrapper",
+      "outputSource": "wrapper"
+    }
+  },
+  "Types": {
+    "DataSources": {
+      "mqtt": "optix.time.ingest.sources.MQTTIngestSource",
+      "echoSample": "sample.SampleIngestSource",
+      "wrapper": "sample.SampleWrapAroundSource"
+    },
+    "DataWriters": {
+      "mqtt": "optix.time.ingest.writers.MQTTIngestWriter",
+      "optixTimeMqtt": "optix.time.ingest.writers.OptixTimeIngestWriter",
+      "sample": "sample.SampleIngestWriter",
+      "wrapper": "sample.SampleWrapAroundSourceWriter"
+    },
+    "Transformers": {
+      "lambda": "optix.time.ingest.transforms.LambdaTransformer",
+      "reverser": "sample.SampleTransformer"
+    }
+  }
+}
